@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
@@ -26,6 +25,11 @@ class fraction {
             this->denominator = denominator;
         }
 
+        fraction(const fraction& other) {
+            this->numerator = other.numerator;
+            this->denominator = other.denominator;
+        };
+
         fraction(int numerator) {
             this->numerator = numerator;
             this->denominator = 1;
@@ -49,8 +53,51 @@ class fraction {
             cout << endl;
         }
 
-        void Umnozhenie(int t) {
+        void multbynumber(int t) {
             numerator = numerator * t;
+        }
+
+        void multbyfrac(const fraction& other) {
+            this->numerator = this->numerator*other.numerator;
+            this->denominator = this->denominator*other.denominator;
+        }
+
+        fraction multbyfracreturn(const fraction& other) const {
+            int a1 = this->numerator * other.numerator;
+            int a2 = this->denominator*other.denominator;
+            fraction a(a1,a2);
+            a.fracsimplify();
+            return(a);
+        }
+
+        void SumFrac(const fraction& other) {
+            this->numerator = this->numerator*other.denominator + other.numerator*this->denominator;
+            this->denominator = this->denominator*other.denominator;
+        }
+
+        fraction SumAndReturn(const fraction& other) const {
+
+            int a1 = this->numerator*other.denominator + other.numerator*this->denominator;
+            int a2 = this->denominator*other.denominator;
+
+            fraction a(a1,a2);
+            a.fracsimplify();
+            return(a);
+        }
+
+        void DiffFrac(const fraction& other) {
+            this->numerator = this->numerator*other.denominator - other.numerator*this->denominator;
+            this->denominator = this->denominator*other.denominator;
+        }
+
+        fraction SumAndReturn(const fraction& other) const {
+
+            int a1 = this->numerator*other.denominator - other.numerator*this->denominator;
+            int a2 = this->denominator*other.denominator;
+
+            fraction a(a1,a2);
+            a.fracsimplify();
+            return(a);
         }
 
         double calc() {
@@ -58,16 +105,14 @@ class fraction {
             return t;
         }
 
-        int getDenominator {
+        int getDenominator() {
             return denominator;
         }
 
-        int getNumerator {
+        int getNumerator() {
             return numerator;
         }
-
 };
-
 
 
 
