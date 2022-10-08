@@ -48,12 +48,28 @@ class fraction {
             this->fracsimplify();
             return *this;
         }
-
-        fraction& operator++();
-        fraction operator++(int);
-        fraction& operator--();
-        fraction operator--(int);
-
+        fraction& operator++()  {
+            this->numerator += this->denominator;
+            return *this;
+        }
+        fraction operator++(int a) {
+            this->numerator = this->numerator + a*this->denominator;
+            int a1 = this->numerator;
+            int a2 = this->denominator;
+            fraction A(a1,a2);
+            return A;
+        }
+        fraction& operator--() {
+            this->numerator = this->numerator - this->denominator;
+            return *this;
+        }
+        fraction operator--(int a) {
+            this->numerator = this->numerator - a*this->denominator;
+            int a1 = this->numerator;
+            int a2 = this->denominator;
+            fraction A(a1,a2);
+            return A;
+        }
         void printfraction() {
             cout << numerator << " / " << denominator << endl;
         }
