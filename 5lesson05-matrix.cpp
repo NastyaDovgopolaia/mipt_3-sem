@@ -42,11 +42,6 @@ public:
     }
 };
 
-//template<typename Field, size_t M, size_t N, size_t K>
-//Matrix<Field, M, N> operator*(const Matrix<Field, M, N>& lha, const Matrix<Field, N, K>& rha) {
-//
-//}
-
 int main() {
 
     return 0;
